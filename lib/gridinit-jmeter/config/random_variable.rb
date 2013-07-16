@@ -4,12 +4,12 @@ module Gridinit
     class RandomVariableConfig
       attr_accessor :doc
       include Helper
-      def initialize(name, min, max, params={})
+      def initialize(name, min, max, output_format = '', params={})
         @doc = Nokogiri::XML(<<-EOF.strip_heredoc)
         <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="#{name}" enabled="#{enabled(params)}">
           <stringProp name="maximumValue">#{max}</stringProp>
           <stringProp name="minimumValue">#{min}</stringProp>
-          <stringProp name="outputFormat"></stringProp>
+          <stringProp name="outputFormat">#{output_format}</stringProp>
           <boolProp name="perThread">false</boolProp>
           <stringProp name="randomSeed"></stringProp>
           <stringProp name="variableName">#{name}</stringProp>
